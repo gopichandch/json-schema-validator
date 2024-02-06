@@ -16,6 +16,8 @@
 
 package com.networknt.schema;
 
+import com.fasterxml.jackson.databind.JsonNode;
+
 /**
  * Used to implement the various formats for the format keyword.
  */
@@ -32,7 +34,7 @@ public interface Format {
      * @param value            to match
      * @return true if matches
      */
-    boolean matches(ExecutionContext executionContext, String value);
+    boolean matches(ExecutionContext executionContext, JsonNode value);
 
     String getErrorMessageDescription();
 }

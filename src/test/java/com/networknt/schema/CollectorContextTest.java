@@ -112,13 +112,13 @@ public class CollectorContextTest {
 
                     @SuppressWarnings("unchecked")
                     @Override
-                    public boolean matches(ExecutionContext executionContext, String value) {
+                    public boolean matches(ExecutionContext executionContext, JsonNode value) {
                         CollectorContext collectorContext = executionContext.getCollectorContext();
                         if (collectorContext.get(SAMPLE_COLLECTOR) == null) {
                             collectorContext.add(SAMPLE_COLLECTOR, new ArrayList<String>());
                         }
                         List<String> returnList = (List<String>) collectorContext.get(SAMPLE_COLLECTOR);
-                        returnList.add(value);
+                        returnList.add(value.asText());
                         return true;
                     }
 

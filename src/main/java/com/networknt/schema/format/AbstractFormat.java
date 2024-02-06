@@ -16,6 +16,7 @@
 
 package com.networknt.schema.format;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.networknt.schema.ExecutionContext;
 
 /**
@@ -33,8 +34,8 @@ public abstract class AbstractFormat extends BaseFormat {
     }
 
     @Override
-    public boolean matches(ExecutionContext executionContext, String value) {
-        return matches(value);
+    public boolean matches(ExecutionContext executionContext, JsonNode value) {
+        return matches(value.asText());
     }
 
     abstract public boolean matches(String value);

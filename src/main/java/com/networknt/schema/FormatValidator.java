@@ -47,10 +47,10 @@ public class FormatValidator extends BaseFormatJsonValidator implements JsonVali
             }
         }
 
-        JsonType nodeType = TypeFactory.getValueNodeType(node, this.validationContext.getConfig());
-        if (nodeType != JsonType.STRING) {
-            return Collections.emptySet();
-        }
+//        JsonType nodeType = TypeFactory.getValueNodeType(node, this.validationContext.getConfig());
+//        if (nodeType != JsonType.STRING) {
+//            return Collections.emptySet();
+//        }
 
         boolean assertionsEnabled = isAssertionsEnabled(executionContext);
         Set<ValidationMessage> errors = new LinkedHashSet<>();
@@ -74,7 +74,7 @@ public class FormatValidator extends BaseFormatJsonValidator implements JsonVali
                 }
             }
             try {
-                if (!format.matches(executionContext, node.textValue())) {
+                if (!format.matches(executionContext, node)) {
                     if (assertionsEnabled) {
                         errors.add(message().instanceNode(node).instanceLocation(instanceLocation)
                             .locale(executionContext.getExecutionConfig().getLocale())

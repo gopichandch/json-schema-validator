@@ -1,6 +1,7 @@
 package com.networknt.schema;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 
@@ -23,8 +24,8 @@ public class Issue784Test {
         }
 
         @Override
-        public boolean matches(ExecutionContext executionContext, String value) {
-            return value.equals(FOO_BAR);
+        public boolean matches(ExecutionContext executionContext, JsonNode value) {
+            return value.asText().equals(FOO_BAR);
         }
 
         @Override
