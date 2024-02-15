@@ -137,6 +137,8 @@ public class SchemaValidatorsConfig {
 
     private ExecutionContextCustomizer executionContextCustomizer;
 
+    private String absentValuesValidatorKeyword;
+
     private boolean loadCollectors = true;
 
     /**
@@ -422,6 +424,14 @@ public class SchemaValidatorsConfig {
      */
     public void setOpenAPI3StyleDiscriminators(boolean openAPI3StyleDiscriminators) {
         this.openAPI3StyleDiscriminators = openAPI3StyleDiscriminators;
+    }
+
+    public String getAbsentValuesValidatorKeyword() {
+        return this.absentValuesValidatorKeyword;
+    }
+
+    public void setAbsentValuesValidatorKeyword(String validator) {
+        this.absentValuesValidatorKeyword = validator;
     }
 
     public void setLoadCollectors(boolean loadCollectors) {

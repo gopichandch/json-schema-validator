@@ -102,6 +102,16 @@ public class PropertiesValidator extends BaseJsonValidator {
                     state.setMatchedNode(true);
                 }
             } else {
+                // custom validator for absent values
+                String customKw = this.validationContext.getConfig().getAbsentValuesValidatorKeyword();
+                if (customKw != null) {
+                    JsonValidator customValidator = this.validationContext.getMetaSchema().newValidator(
+                            this.validationContext, getSchemaLocation(), instanceLocation.append(entry.getKey()), customKw, entry.getValue().schemaNode, getParentSchema());
+                    Set<ValidationMessage> customAbsentErrors = customValidator.validate(executionContext, node, rootNode, instanceLocation);
+                    if (errors == null) errors = new SetView<>();
+                    errors.addAll(customAbsentErrors);
+                }
+
                 // check whether the node which has not matched was mandatory or not
 
                 // the node was mandatory, decide which behavior to employ when validator has
